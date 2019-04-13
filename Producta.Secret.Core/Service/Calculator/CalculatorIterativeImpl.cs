@@ -1,6 +1,5 @@
-﻿using System.Runtime.ConstrainedExecution;
-
-namespace Producta.Secret
+﻿
+namespace Producta.Secret.Core.Service.Calculator
 {
     public class CalculatorIterativeImpl : Calculator
     {
@@ -25,6 +24,12 @@ namespace Producta.Secret
                 fib = temp;
             }
             return fib;
+        }
+
+        public bool ValidateDigits(int input)
+        {
+            // The last value with 16 digits are 78
+            return input <= 78;
         }
     }
 }

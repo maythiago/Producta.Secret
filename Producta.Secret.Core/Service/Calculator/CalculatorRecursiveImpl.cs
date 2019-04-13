@@ -1,4 +1,4 @@
-﻿namespace Producta.Secret
+﻿namespace Producta.Secret.Core.Service.Calculator
 {
     public class CalculatorRecursiveImpl : Calculator
     {
@@ -9,6 +9,11 @@
                 return index;
             }
             return GetFibonacci(index - 1) + GetFibonacci(index - 2);
+        }
+
+        public bool ValidateDigits(int input)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
