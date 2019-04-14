@@ -2,16 +2,16 @@
 {
     public class CalculatorRecursiveImpl : Calculator
     {
-        public long GetFibonacci(int index)
+        public long GetFibonacci(int input)
         {
-            if (index < 2)
+            if (input < 2)
             {
-                return index;
+                return input;
             }
-            return GetFibonacci(index - 1) + GetFibonacci(index - 2);
+            return GetFibonacci(input - 1) + GetFibonacci(input - 2);
         }
 
-        public bool ValidateDigits(int input)
+        public Notification ValidateDigits(int input)
         {
             throw new System.NotImplementedException();
         }

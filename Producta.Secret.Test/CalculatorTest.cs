@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Producta.Secret.Core.Service.Calculator;
 using Xunit;
 
@@ -26,13 +27,22 @@ namespace Producta.Secret.Test
         }
 
         [Theory]
-        [InlineData(5, true)]
-        [InlineData(78, true)]
-        [InlineData(79, false)]
-        public void given_index_then_validate_if_fibonacci_value_is_16_digits_above(int input, bool expected)
+        [InlineData(79, "The fibonacci value of input cannot exceed 16 digits.")]
+        [InlineData(-5, "The fibonacci index could not be negative.")]
+        public void given_invalid_index_then_return_error(int input, string expected)
         {
             var value = calc.ValidateDigits(input);
-            Assert.Equal(expected, value);
+            Assert.Equal(expected, value.Errors.First());
+        }
+        [Theory]
+        [InlineData(78)]
+        [InlineData(5)]
+        [InlineData(0)]
+        public void given_valid_index_then_return_empty_errors(int input)
+        {
+            var value = calc.ValidateDigits(input);
+            
+            Assert.Empty(value.Errors);
         }
     }
 }
