@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Producta.Secret.Core.Service.Calculator;
+using Producta.Secret.Core.Service.Fibonacci;
 
 namespace Producta.Secret
 {
@@ -6,7 +7,9 @@ namespace Producta.Secret
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var calc = new CalculatorIterativeImpl();
+            var facade = new VaultFacadeImpl(calc);
+            new ConsolerHandler(facade).Execute();
         }
     }
 }
